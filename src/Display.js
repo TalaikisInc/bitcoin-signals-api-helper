@@ -1,22 +1,33 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Container } from 'reactstrap'
 
 import Header from './Header'
 
-const sttrategiesMap = {
+const strategiesMap = {
   pi: 'Bitcoin Pi',
   'pi-2': 'Bitcoin Pi 2.0',
   one: 'Bitcoin One',
   'one-2': 'Bitcoin One 2.0',
   s: 'Bitcoin S',
+  f: 'Bitcoin F',
   's-2': 'Bitcoin S 2.0',
   's-3': 'Bitcoin S 3.0',
-  index: 'Strategies portfolio A'
+  idx: 'Strategies portfolio A'
 }
 
 const keyMap = {
   strategy_description: 'Strategy description',
   date: 'Date',
+}
+
+const eachStrategy = (point, i) => {
+  return Object.keys(point).map((key, k) => {
+    return (
+      <li key={`${i}-${k}`}>
+        { getReadable(key, point) }{ key !== 'strategy_description' ? <Fragment>: { point[key] }</Fragment> : null }
+      </li>
+    )
+  })
 }
 
 const getReadable = (key, point) => {
@@ -27,23 +38,19 @@ const getReadable = (key, point) => {
     }
     return keyDesc
   }
-  return sttrategiesMap[key]
+  return `${strategiesMap[key]} signal`
 }
 
 const Display = ({ data }) => (
   <Container className="container">
     <Header />
-    <ul>
-      { data.map((point, i) => {
-        return Object.keys(point).map((key) => {
-          return (
-            <li key={i}>
-              { getReadable(key) }: point[key]
-            </li>
-          )
-        })
-      })}
-    </ul>
+    { data.map((point, i) => {
+      return (
+        <ul key={i}>
+          { eachStrategy(point, i) }
+        </ul>
+      )
+    })}
   </Container>
 )
 
