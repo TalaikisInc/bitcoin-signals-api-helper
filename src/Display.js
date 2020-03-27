@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'reactstrap'
 
-const Display = ({ data }) =>(
+const Display = ({ data }) => (
   <Container className="container">
     <ul>
       { data.map((point, i) => {

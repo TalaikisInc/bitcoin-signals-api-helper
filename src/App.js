@@ -45,7 +45,7 @@ const App = () => {
     <Container className="container">
       { !data ? <Fragment>
         <Header />
-        <Form onSubmit={onSubmit}>
+        <Form>
           <FormGroup>
             <Label for="endpoint">Endpoint</Label>
             <Input type="select" name="selectMulti" id="endpoint" onChange={(e) => setEndpoint(e.target.value)}>
@@ -73,7 +73,7 @@ const App = () => {
           </FormGroup>
           <Error err={err} />
           <p>* If you don't have API key, <a href="https://rapidapi.com/talaikis.tadas/api/blueblood-bitcoin-trading-signals/pricing">get it from RapiDAPI</a>.</p>
-          { loading ? null : <Button>Submit</Button> }
+          { loading ? null : <Button onClick={() => onSubmit()}>Submit</Button> }
         </Form>
       </Fragment> : <Display data={data} /> }
     </Container>
