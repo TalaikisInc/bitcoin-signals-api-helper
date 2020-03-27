@@ -22,8 +22,6 @@ const App = () => {
       setStrategy('all')
     }
     */
-    console.log('data')
-    console.log(data)
 
     if (endpoint && strategy && apiKey) {
       const req = unirest('GET', `${baseUrl}/v1.0/${endpoint}/${strategy}`)
@@ -72,7 +70,7 @@ const App = () => {
             <Input type="password" name="apiKey" id="apiKey" placeholder="RapidAPI key" onChange={(e) => setApiKey(e.target.value)} />
           </FormGroup>
           <Error err={err} />
-          <p>* If you don't have API key, <a href="https://rapidapi.com/talaikis.tadas/api/blueblood-bitcoin-trading-signals/pricing">get it from RapiDAPI</a>.</p>
+          <p>* If you don't have API key, <a href="https://rapidapi.com/talaikis.tadas/api/blueblood-bitcoin-trading-signals/pricing">get it from RapidAPI</a>.</p>
           { loading ? null : <Button onClick={() => onSubmit()}>Submit</Button> }
         </Form>
       </Fragment> : <Display data={data} /> }
