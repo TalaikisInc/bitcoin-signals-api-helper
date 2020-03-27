@@ -11,20 +11,23 @@ const sttrategiesMap = {
   s: 'Bitcoin S',
   's-2': 'Bitcoin S 2.0',
   's-3': 'Bitcoin S 3.0',
-  idx: 'Strategies portfolio A'
+  index: 'Strategies portfolio A'
 }
 
 const keyMap = {
   strategy_description: 'Strategy description',
-  date: 'Date'
+  date: 'Date',
 }
 
-const getReadable = (key) => {
+const getReadable = (key, point) => {
   const keyDesc = keyMap[key]
   if (keyDesc) {
-    return sttrategiesMap[key]
+    if (key === 'strategy_description') {
+      return <a href={point[key]}>{ keyDesc }</a>
+    }
+    return keyDesc
   }
-  return keyDesc
+  return sttrategiesMap[key]
 }
 
 const Display = ({ data }) => (
