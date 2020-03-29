@@ -18,13 +18,15 @@ const strategiesMap = {
 const keyMap = {
   strategy_description: 'Strategy description',
   date: 'Date',
+  signal: 'Signal',
+  name: 'Strategy'
 }
 
 const eachStrategy = (point, i) => {
   return Object.keys(point).map((key, k) => {
     return (
       <li key={`${i}-${k}`}>
-        { getReadable(key, point) }{ key !== 'strategy_description' ? <Fragment>: { point[key] }</Fragment> : null }
+        { getReadable(key, point) }{ key !== 'strategy_description' && key !== 'name' ? <Fragment>: { point[key] }</Fragment> : null }
       </li>
     )
   })
@@ -36,15 +38,19 @@ const getReadable = (key, point) => {
     if (key === 'strategy_description') {
       return <a href={point[key]}>{ keyDesc }</a>
     }
+    if (key === 'name') {
+      return `${keyDesc}: ${strategiesMap[point.name]}`
+
+    }
     return keyDesc
   }
-  return `${strategiesMap[key]} signal`
 }
 
 const Display = ({ data }) => (
   <Container className="container">
     <Header />
     { data.map((point, i) => {
+      console.log(point)
       return (
         <ul key={i}>
           { eachStrategy(point, i) }
