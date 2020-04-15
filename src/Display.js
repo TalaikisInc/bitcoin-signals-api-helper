@@ -12,11 +12,11 @@ const strategiesMap = {
   f: 'Bitcoin F',
   's-2': 'Bitcoin S 2.0',
   's-3': 'Bitcoin S 3.0',
-  idx: 'Strategies portfolio A'
+  idx: 'Strategies portfolio',
+  v: 'Bitcoin V'
 }
 
 const keyMap = {
-  strategy_description: 'Strategy description',
   date: 'Date',
   signal: 'Signal',
   name: 'Strategy'
@@ -35,12 +35,8 @@ const eachStrategy = (point, i) => {
 const getReadable = (key, point) => {
   const keyDesc = keyMap[key]
   if (keyDesc) {
-    if (key === 'strategy_description') {
-      return <a href={point[key]}>{ keyDesc }</a>
-    }
     if (key === 'name') {
       return `${keyDesc}: ${strategiesMap[point.name]}`
-
     }
     return keyDesc
   }
@@ -50,7 +46,6 @@ const Display = ({ data }) => (
   <Container className="container">
     <Header />
     { data.map((point, i) => {
-      console.log(point)
       return (
         <ul key={i}>
           { eachStrategy(point, i) }
