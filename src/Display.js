@@ -13,7 +13,8 @@ const strategiesMap = {
   's-2': 'Bitcoin S 2.0',
   's-3': 'Bitcoin S 3.0',
   idx: 'Strategies portfolio',
-  v: 'Bitcoin V'
+  v: 'Bitcoin V',
+  hodl: 'Buy and hold'
 }
 
 const keyMap = {
