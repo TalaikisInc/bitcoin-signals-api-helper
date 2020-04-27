@@ -8,8 +8,8 @@ import Error from './Error'
 const baseUrl = 'https://blueblood-bitcoin-trading-signals.p.rapidapi.com'
 
 const App = () => {
-  const [endpoint, setEndpoint] = useState('last-signals')
-  const [strategy, setStrategy] = useState('all')
+  const [endpoint, setEndpoint] = useState('info')
+  const [strategy, setStrategy] = useState('last-signals')
   const [apiKey, setApiKey] = useState(null)
   const [err, setError] = useState(null)
   const [data, setData] = useState(null)
@@ -48,7 +48,7 @@ const App = () => {
             <Label for="endpoint">Endpoint</Label>
             <Input type="select" name="selectMulti" id="endpoint" onChange={(e) => setEndpoint(e.target.value)}>
               { /* <option value="signals">Signals</option> */ }
-              <option value="last-signals">All Signals</option>
+              <option value="info">All Signals</option>
             </Input>
           </FormGroup>
           { endpoint === 'signals' ? <FormGroup>
