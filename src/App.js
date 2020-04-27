@@ -8,7 +8,7 @@ import Error from './Error'
 const baseUrl = 'https://blueblood-bitcoin-trading-signals.p.rapidapi.com'
 
 const App = () => {
-  const [endpoint, setEndpoint] = useState('info')
+  const [endpoint, setEndpoint] = useState('last-signals')
   const [strategy, setStrategy] = useState('last-signals')
   const [apiKey, setApiKey] = useState(null)
   const [err, setError] = useState(null)
