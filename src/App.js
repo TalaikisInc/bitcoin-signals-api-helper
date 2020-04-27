@@ -31,7 +31,7 @@ const App = () => {
       })
       req.end((res) => {
         if (res.error) setError(res.error.message)
-        setData(res.body)
+        setData(JSON.parse(res.body))
       })
     } else {
       setLoading(false)
@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <Container className="container">
-      { !data ? <Fragment>
+      { data === null ? <Fragment>
         <Header />
         <Form>
           <FormGroup>

@@ -43,17 +43,19 @@ const getReadable = (key, point) => {
   }
 }
 
-const Display = ({ data }) => (
-  <Container className="container">
-    <Header />
-    { data.map((point, i) => {
-      return (
-        <ul key={i}>
-          { eachStrategy(point, i) }
-        </ul>
-      )
-    })}
-  </Container>
-)
+const Display = ({ data }) => {
+  return (
+    <Container className="container">
+      <Header />
+      { data.map((point, i) => {
+        return (
+          <ul key={i}>
+            { eachStrategy(point, i) }
+          </ul>
+        )
+      })}
+    </Container>
+  )
+}
 
 export default Display
